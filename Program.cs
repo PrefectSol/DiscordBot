@@ -29,8 +29,14 @@
                 .ConfigureDiscordHost((context, config) => {
                     config.SocketConfig = new DiscordSocketConfig {
                         LogLevel = LogSeverity.Debug,
-                        AlwaysDownloadUsers = false,
+                        AlwaysDownloadUsers = true,
                         MessageCacheSize = 10000,
+                        GatewayIntents =
+                        GatewayIntents.Guilds |
+                        GatewayIntents.GuildMembers |
+                        GatewayIntents.GuildMessageReactions |
+                        GatewayIntents.GuildMessages |
+                        GatewayIntents.GuildVoiceStates,
                     };
                     config.Token = context.Configuration["Token"];
                 })
